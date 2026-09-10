@@ -8,9 +8,9 @@ const twMerge = extendTailwindMerge({
       'font-size': [
         {
           text: [
-            'h1', 'h2', 'h3', 'h4', 'h5',
+            'display',
+            'h1', 'h2', 'h3', 'h4',
             'body-l', 'body-m', 'body-s', 'body-xs', 'body-2xs',
-            'caption-l', 'caption-m', 'caption-s',
           ],
         },
       ],

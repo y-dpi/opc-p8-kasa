@@ -1,1 +1,59 @@
 @import 'tailwindcss';
+
+/* Load font 'Inter' */
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/inter.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Tailwind themes */
+@theme inline {
+
+  /* Fonts */
+  --font-body: 'Inter', sans-serif;
+
+  /* Colors */
+  --color-black: #0D0D0D;
+  --color-white: #FFFFFF;
+  --color-main-red: #99331A;
+  --color-dark-orange: #842C16;
+  --color-light-orange: #FFFBF9;
+  --color-dark-grey: #565656;
+  --color-light-grey: #F5F5F5;
+
+  /* Display */
+  --text-display: 6.25rem;
+  --text-display--line-height: 1.426;
+
+  /* Headings */
+  --text-h1: 2rem;
+  --text-h1--line-height: 1.426;
+  --text-h2: 1.5rem;
+  --text-h2--line-height: 1.426;
+  --text-h3: 1.125rem;
+  --text-h3--line-height: 1.426;
+  --text-h4: 1rem;
+  --text-h4--line-height: 1.426;
+
+  /* Body */
+  --text-body-l: 1rem;
+  --text-body-l--line-height: 1.426;
+  --text-body-m: 0.875rem;
+  --text-body-m--line-height: 1.426;
+  --text-body-s: 0.75rem;
+  --text-body-s--line-height: 1.426;
+  --text-body-xs: 0.625rem;
+  --text-body-xs--line-height: 1.426;
+  --text-body-2xs: 0.5rem;
+  --text-body-2xs--line-height: 1.426;
+}
+
+/* Global styling */
+body {
+  background: var(--color-light-orange);
+  color: var(--color-black);
+  font-family: var(--font-body);
+}

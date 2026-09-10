@@ -2,6 +2,9 @@ import './globals.css';
 
 import type { Metadata } from 'next';
 
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+
 export const metadata: Metadata = {
   title: {
     default: 'Kasa',
@@ -13,7 +16,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang='fr' className='h-full antialiased'>
-      <body className='min-h-full flex flex-col'>{children}</body>
+      <body className='h-full min-h-full flex flex-col'>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
