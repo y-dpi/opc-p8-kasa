@@ -2,23 +2,18 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { cache } from 'react';
 
+import type { AuthUser } from '../models/shared';
+
 // Name of the cookie that holds the session.
-const SESSION_COOKIE = 'abricot-session-token';
+const SESSION_COOKIE = 'kasa-session-token';
 
 // Session lifetime in seconds (mirrors the API's 7-day JWT).
 const SESSION_MAX_AGE = 60 * 60 * 24 * 7;
 
-// Authenticated user stored alongside the API token.
-interface SessionUser {
-  id: string;
-  email: string;
-  name: string | null;
-}
-
-// NextJS session holding the API JWT and the user.
+// NextJS session holding the API JWT and the authenticated user.
 interface Session {
   token: string;
-  user: SessionUser;
+  user: AuthUser;
 }
 
 /**
@@ -30,7 +25,7 @@ function parseSession(raw: string | undefined): Session | null {
   if (!raw) return null;
   try {
     const value = JSON.parse(raw) as Partial<Session>;
-    if (typeof value.token === 'string' && value.user != null && typeof value.user.id === 'string')
+    if (typeof value.token === 'string' && value.user != null && typeof value.user.id === 'number')
       return value as Session;
   } catch { } // Malformed cookie, treat as no session.
   return null;
