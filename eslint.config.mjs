@@ -49,6 +49,14 @@ const eslintConfig = defineConfig([
     },
   },
 
+  // The mocks mirror the signatures of the models, so they keep parameters they never read.
+  {
+    files: ['mocks/**/*.ts'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': ['warn', { args: 'none' }],
+    },
+  },
+
   // JSON / JSONC constraints.
   {
     files: ['**/*.json'],
