@@ -29,7 +29,7 @@ export default async function Home() {
         <PageHeading title='Chez vous, partout et ailleurs' description={INTRODUCTION} />
 
         <div className='relative h-120 w-full overflow-hidden rounded-[20px]'>
-          <Image src={HomePhotograph} alt='' fill priority sizes='100vw' className='object-cover' />
+          <Image src={HomePhotograph} alt='' fill preload sizes='100vw' className='object-cover' />
         </div>
       </section>
 

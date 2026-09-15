@@ -10,6 +10,8 @@ import MenuIcon from '../assets/icons/menu-icon.svg';
 import MessageIcon from '../assets/icons/message-icon.svg';
 import MessageFilledIcon from '../assets/icons/message-icon-filled.svg';
 import MissingPhotoIcon from '../assets/icons/missing-photo-icon.svg';
+import PauseIcon from '../assets/icons/pause-icon.svg';
+import PlayIcon from '../assets/icons/play-icon.svg';
 import PlusIcon from '../assets/icons/plus-icon.svg';
 import SendIcon from '../assets/icons/send-icon.svg';
 import cn from '../utils/className';
@@ -27,6 +29,8 @@ export type IconName =
   | 'message'
   | 'message-filled'
   | 'missing-photo'
+  | 'pause'
+  | 'play'
   | 'plus'
   | 'send';
 
@@ -42,6 +46,8 @@ const ICONS: Record<IconName, StaticImageData> = {
   message: MessageIcon,
   'message-filled': MessageFilledIcon,
   'missing-photo': MissingPhotoIcon,
+  pause: PauseIcon,
+  play: PlayIcon,
   plus: PlusIcon,
   send: SendIcon
 };

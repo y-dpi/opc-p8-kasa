@@ -32,7 +32,7 @@ export default function AboutPage() {
         <PageHeading title='À propos' description={INTRODUCTION} />
 
         <div className='relative h-120 w-full overflow-hidden rounded-[20px]'>
-          <Image src={AboutPhotograph} alt='' fill priority sizes='100vw' className='object-cover' />
+          <Image src={AboutPhotograph} alt='' fill preload sizes='100vw' className='object-cover' />
         </div>
       </section>
 
