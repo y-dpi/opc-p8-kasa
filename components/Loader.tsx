@@ -1,6 +1,11 @@
 import cn from '../utils/className';
 
-// Loading indicator component.
+/**
+ * Loading indicator component.
+ * @param props.label What is being waited for, 'Chargement…' by default.
+ * @param props.className Extra classes for the indicator.
+ * @returns The loading indicator.
+ */
 export default function Loader(props: {
   label?: string,
   className?: string

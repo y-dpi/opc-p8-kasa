@@ -5,7 +5,13 @@ import { useCallback, useEffect, useRef } from 'react';
 
 import cn from '../utils/className';
 
-// Scrollable area component.
+/**
+ * Scrollable area component.
+ * @param props.children Content that scrolls.
+ * @param props.initial Which end to open on, the top by default.
+ * @param props.className Extra classes for the area.
+ * @returns The scrollable area.
+ */
 export default function ScrollArea(props: {
   children: ReactNode,
   initial?: 'top' | 'bottom',

@@ -3,7 +3,16 @@ import type { ReactNode } from 'react';
 
 import cn from '../utils/className';
 
-// Menu item component.
+/**
+ * Menu item component.
+ * @param props.label Text of the entry.
+ * @param props.href Where the entry leads.
+ * @param props.icon Icon drawn ahead of the label.
+ * @param props.active Whether the entry points at the page currently open.
+ * @param props.onClick What following the entry also does, such as closing the menu.
+ * @param props.className Extra classes for the entry.
+ * @returns The menu entry.
+ */
 export default function MenuItem(props: {
   label: string,
   href: string,

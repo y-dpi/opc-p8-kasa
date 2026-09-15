@@ -1,6 +1,11 @@
 import cn from '../utils/className';
 
-// Date separator component.
+/**
+ * Date separator component.
+ * @param props.label Date to print between the two rules.
+ * @param props.className Extra classes for the separator.
+ * @returns The separator.
+ */
 export default function DateSeparator(props: {
   label: string,
   className?: string

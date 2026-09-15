@@ -12,7 +12,18 @@ const BUTTON_STYLES: Record<ButtonVariant, string> = {
   secondary: 'bg-light-grey text-dark-grey hover:bg-black/10'
 };
 
-// Button component.
+/**
+ * Button component.
+ * @param props.label Text on the button.
+ * @param props.variant Colour scheme, 'primary' by default.
+ * @param props.icon Icon drawn ahead of the label.
+ * @param props.disabled Whether the button refuses to be pressed, which also rules out a link.
+ * @param props.type Submit behaviour, 'submit' by default.
+ * @param props.href Where pressing it leads, which turns the button into a link.
+ * @param props.onClick What pressing it does.
+ * @param props.className Extra classes for the button.
+ * @returns The button, or the link it stands in for.
+ */
 export default function Button(props: {
   label: string,
   variant?: ButtonVariant,

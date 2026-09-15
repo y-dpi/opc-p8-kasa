@@ -3,7 +3,16 @@ import type { StaticImageData } from 'next/image';
 import cn from '../utils/className';
 import Avatar from './Avatar';
 
-// Message bubble component.
+/**
+ * Message bubble component.
+ * @param props.author Who wrote the message.
+ * @param props.time When it was sent.
+ * @param props.text Body of the message.
+ * @param props.outgoing Whether the signed-in user wrote it, which turns the bubble around.
+ * @param props.avatar Picture of the author, left out when they have none.
+ * @param props.className Extra classes for the bubble and its heading.
+ * @returns The message.
+ */
 export default function MessageBubble(props: {
   author: string,
   time: string,

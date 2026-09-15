@@ -14,7 +14,16 @@ export interface Conversation {
   avatar?: string | StaticImageData;
 }
 
-// Conversation list component.
+/**
+ * Conversation list component.
+ * @param props.conversations Conversations to list, in the order they should appear.
+ * @param props.hrefFor Where opening a given conversation leads.
+ * @param props.backHref Where the back button leads.
+ * @param props.title Heading above the list, 'Messages' by default.
+ * @param props.activeId ID of the conversation currently open.
+ * @param props.className Extra classes for the list.
+ * @returns The list of conversations.
+ */
 export default function ConversationList(props: {
   conversations: Conversation[],
   hrefFor: (conversation: Conversation) => string,

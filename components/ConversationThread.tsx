@@ -21,7 +21,13 @@ export interface MessageGroup {
   messages: Message[];
 }
 
-// Conversation thread component.
+/**
+ * Conversation thread component.
+ * @param props.groups Messages of the conversation, grouped by day.
+ * @param props.backHref Where the back button leads, which only small screens show.
+ * @param props.className Extra classes for the thread.
+ * @returns The thread and the box to answer it with.
+ */
 export default function ConversationThread(props: {
   groups: MessageGroup[],
   backHref: string,

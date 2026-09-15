@@ -18,7 +18,11 @@ const NAV_ITEMS = [
   { label: 'Favoris', href: '/favorites' }
 ];
 
-// Header component.
+/**
+ * Header component.
+ * @param props.userName Name of the signed-in user, absent while nobody is.
+ * @returns The header and its menus.
+ */
 export default function Header(props: {
   userName?: string | null
 }) {

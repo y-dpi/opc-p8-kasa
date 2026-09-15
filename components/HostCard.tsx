@@ -6,7 +6,16 @@ import Avatar from './Avatar';
 import Card from './Card';
 import Rating from './Rating';
 
-// Host card component.
+/**
+ * Host card component.
+ * @param props.name Name of the host.
+ * @param props.rating Rating of their property, out of five.
+ * @param props.title Heading of the card, 'Votre hôte' by default.
+ * @param props.avatar Picture of the host, left out when they have none.
+ * @param props.children Controls printed under the host, such as the buttons to reach them.
+ * @param props.className Extra classes for the card.
+ * @returns The host card.
+ */
 export default function HostCard(props: {
   name: string,
   rating: number,

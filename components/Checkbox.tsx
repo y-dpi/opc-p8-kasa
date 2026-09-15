@@ -1,6 +1,14 @@
 import cn from '../utils/className';
 
-// Checkbox component.
+/**
+ * Checkbox component.
+ * @param props.label Text beside the box.
+ * @param props.name Field name the box is submitted under.
+ * @param props.value Value submitted when ticked, the label itself by default.
+ * @param props.defaultChecked Whether the box starts ticked.
+ * @param props.className Extra classes for the label wrapping the box.
+ * @returns The checkbox and its label.
+ */
 export default function Checkbox(props: {
   label: string,
   name?: string,

@@ -1,7 +1,13 @@
 import cn from '../utils/className';
 import IconButton from './IconButton';
 
-// Message composer component.
+/**
+ * Message composer component.
+ * @param props.placeholder Hint shown while the box is empty, which also names it.
+ * @param props.name Field name the message is submitted under.
+ * @param props.className Extra classes for the composer.
+ * @returns The box to write a message in.
+ */
 export default function MessageComposer(props: {
   placeholder?: string,
   name?: string,

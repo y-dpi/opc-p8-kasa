@@ -6,7 +6,12 @@ import { useState } from 'react';
 import cn from '../utils/className';
 import GallerySlides from './GallerySlides';
 
-// Property gallery component.
+/**
+ * Property gallery component.
+ * @param props.images Pictures of the property, the first of them being the cover.
+ * @param props.className Extra classes for the gallery.
+ * @returns The gallery, or nothing at all when there is no picture.
+ */
 export default function Gallery(props: {
   images: (string | StaticImageData)[],
   className?: string

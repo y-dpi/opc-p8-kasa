@@ -5,7 +5,19 @@ import cn from '../utils/className';
 import Icon from './Icon';
 import IconButton from './IconButton';
 
-// Property card component.
+/**
+ * Property card component.
+ * @param props.title Title of the listing.
+ * @param props.location Where the property is.
+ * @param props.price What a night costs, in euros.
+ * @param props.image Cover picture, a placeholder standing in when there is none.
+ * @param props.href Where the card leads.
+ * @param props.priceUnit What the price is charged per, 'par nuit' by default.
+ * @param props.favorite Whether the property is already among the favorites.
+ * @param props.favoriteAction What the favorite control submits, the control doing nothing without it.
+ * @param props.className Extra classes for the card.
+ * @returns The property card.
+ */
 export default function PropertyCard(props: {
   title: string,
   location: string,

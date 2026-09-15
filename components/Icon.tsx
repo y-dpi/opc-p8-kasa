@@ -52,7 +52,13 @@ const ICONS: Record<IconName, StaticImageData> = {
   send: SendIcon
 };
 
-// Icon wrapper component.
+/**
+ * Icon wrapper component.
+ * @param props.name Which icon to draw.
+ * @param props.color Colour to fill it with, the inherited text colour by default.
+ * @param props.className Extra classes for the icon.
+ * @returns The icon.
+ */
 export default function Icon(props: {
   name: IconName,
   color?: string,

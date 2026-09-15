@@ -3,7 +3,14 @@ import Image, { type StaticImageData } from 'next/image';
 import cn from '../utils/className';
 import toInitials from '../utils/toInitials';
 
-// Avatar component.
+/**
+ * Avatar component.
+ * @param props.name Name of the person, shown as initials when there is no picture.
+ * @param props.src Picture of the person, left out when they have none.
+ * @param props.rounded How far the corners are rounded, 'md' by default.
+ * @param props.className Extra classes for the avatar.
+ * @returns The avatar.
+ */
 export default function Avatar(props: {
   name: string,
   src?: string | StaticImageData,

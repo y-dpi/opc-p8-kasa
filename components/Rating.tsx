@@ -1,6 +1,11 @@
 import cn from '../utils/className';
 
-// Rating badge component.
+/**
+ * Rating badge component.
+ * @param props.value Rating of the property, out of five.
+ * @param props.className Extra classes for the badge.
+ * @returns The rating badge.
+ */
 export default function Rating(props: {
   value: number,
   className?: string

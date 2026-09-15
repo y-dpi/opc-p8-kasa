@@ -8,7 +8,13 @@ import IconButton from './IconButton';
 // How long a picture stays on screen before the next one takes over.
 const SLIDE_MS = 3000;
 
-// Fullscreen gallery slides component.
+/**
+ * Fullscreen gallery slides component.
+ * @param props.images Pictures to run through.
+ * @param props.startAt Index of the picture to open on.
+ * @param props.onClose Called once the viewer has closed.
+ * @returns The fullscreen viewer, or nothing at all when there is no picture.
+ */
 export default function GallerySlides(props: {
   images: (string | StaticImageData)[],
   startAt: number,

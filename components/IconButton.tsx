@@ -12,7 +12,17 @@ const ICON_BUTTON_STYLES: Record<IconButtonVariant, string> = {
   secondary: 'bg-light-grey text-dark-grey hover:bg-black/10'
 };
 
-// Icon button component.
+/**
+ * Icon button component.
+ * @param props.icon Which icon to draw.
+ * @param props.label What the button does, read out in place of the icon.
+ * @param props.variant Colour scheme, 'primary' by default.
+ * @param props.type Submit behaviour, 'button' by default.
+ * @param props.href Where pressing it leads, which turns the button into a link.
+ * @param props.onClick What pressing it does.
+ * @param props.className Extra classes for the button.
+ * @returns The button, or the link it stands in for.
+ */
 export default function IconButton(props: {
   icon: IconName,
   label: string,

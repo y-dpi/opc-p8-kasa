@@ -7,7 +7,11 @@ import Button from './Button';
 import Input from './Input';
 import Link from './Link';
 
-// Login form component.
+/**
+ * Login form component.
+ * @param props.from Page to return to once signed in, the home page by default.
+ * @returns The login form.
+ */
 export default function LoginForm(props: {
   from?: string
 }) {

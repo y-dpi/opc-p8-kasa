@@ -2,7 +2,14 @@ import NextLink from 'next/link';
 
 import cn from '../utils/className';
 
-// Link (text link) component.
+/**
+ * Text link component.
+ * @param props.label Text of the link.
+ * @param props.href Where the link leads.
+ * @param props.emphasis Part of the wording to pick out, printed after the label.
+ * @param props.className Extra classes for the link.
+ * @returns The link.
+ */
 export default function Link(props: {
   label: string,
   href: string,

@@ -1,6 +1,14 @@
 import cn from '../utils/className';
 
-// Page heading (title and introduction) component.
+/**
+ * Page heading (title and introduction) component.
+ * @param props.title Title of the page, and its only first-level heading.
+ * @param props.description Introduction printed under the title.
+ * @param props.align Which way the heading reads, centred by default.
+ * @param props.compact Whether the title opens a size down on small screens.
+ * @param props.className Extra classes for the heading.
+ * @returns The heading and its introduction.
+ */
 export default function PageHeading(props: {
   title: string,
   description?: string,

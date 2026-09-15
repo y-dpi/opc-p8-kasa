@@ -6,7 +6,17 @@ import type { ChangeEvent } from 'react';
 import cn from '../utils/className';
 import Icon from './Icon';
 
-// Image picker component.
+/**
+ * Image picker component.
+ * @param props.label Heading above the picker.
+ * @param props.images URLs of the pictures picked so far.
+ * @param props.onPick Called with the files the host has just chosen.
+ * @param props.onRemove Called with the URL of the picture to drop.
+ * @param props.multiple Whether more than one picture may be picked at a time.
+ * @param props.pending Whether the pictures are still on their way to the API.
+ * @param props.className Extra classes for the picker.
+ * @returns The picker and the pictures picked so far.
+ */
 export default function ImageField(props: {
   label: string,
   images: string[],

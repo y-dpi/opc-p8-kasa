@@ -4,7 +4,15 @@ import Icon from './Icon';
 // Shared shape of the tag, whether it is plain text or a toggle.
 const TAG_BASE = 'inline-flex items-center gap-2 rounded-[5px] px-4 py-2 text-body-s font-normal whitespace-nowrap';
 
-// Tag component.
+/**
+ * Tag component.
+ * @param props.label Text of the tag.
+ * @param props.selected Whether the tag is picked, which only a toggle shows.
+ * @param props.onToggle What picking the tag up or putting it down does, which makes it a toggle.
+ * @param props.onRemove What dropping the tag does, which gives it a control to do so.
+ * @param props.className Extra classes for the tag.
+ * @returns The tag, as plain text or as a control.
+ */
 export default function Tag(props: {
   label: string,
   selected?: boolean,

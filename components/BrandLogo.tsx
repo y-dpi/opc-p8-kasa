@@ -7,7 +7,13 @@ import cn from '../utils/className';
 // Types.
 type BrandLogoVariant = 'full' | 'picto';
 
-// Brand logo component.
+/**
+ * Brand logo component.
+ * @param props.variant Which cut of the logo to draw, the full wordmark by default.
+ * @param props.alt What the logo stands for, empty so it stays decorative unless a caller names it.
+ * @param props.className Extra classes for the logo.
+ * @returns The logo.
+ */
 export default function BrandLogo(props: {
   variant?: BrandLogoVariant,
   alt?: string,

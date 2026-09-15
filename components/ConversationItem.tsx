@@ -4,7 +4,18 @@ import NextLink from 'next/link';
 import cn from '../utils/className';
 import Avatar from './Avatar';
 
-// Conversation list item component.
+/**
+ * Conversation list item component.
+ * @param props.name Name of the person the conversation is with.
+ * @param props.preview Opening of the last message.
+ * @param props.time When that message arrived.
+ * @param props.href Where opening the conversation leads.
+ * @param props.avatar Picture of the person, left out when they have none.
+ * @param props.unread Whether the conversation still holds something unread.
+ * @param props.active Whether this is the conversation currently open.
+ * @param props.className Extra classes for the entry.
+ * @returns The conversation entry.
+ */
 export default function ConversationItem(props: {
   name: string,
   preview: string,

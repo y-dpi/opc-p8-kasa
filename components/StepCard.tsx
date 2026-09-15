@@ -1,6 +1,12 @@
 import cn from '../utils/className';
 
-// Step card component.
+/**
+ * Step card component.
+ * @param props.title Name of the step.
+ * @param props.description What the step involves.
+ * @param props.className Extra classes for the card.
+ * @returns The step card.
+ */
 export default function StepCard(props: {
   title: string,
   description: string,
