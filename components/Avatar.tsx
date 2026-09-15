@@ -15,7 +15,7 @@ export default function Avatar(props: {
   return (
     <span className={cn('h-full w-full relative block shrink-0 overflow-hidden bg-light-grey', radius, props.className)}>
       {props.src ? (
-        <Image src={props.src} alt={props.name} fill sizes='120px' className='object-cover' />
+        <Image src={props.src} alt={`Avatar de ${props.name}`} fill sizes='120px' className='object-cover' />
       ) : (
         <span
           aria-hidden='true'

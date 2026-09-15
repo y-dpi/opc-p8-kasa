@@ -19,14 +19,14 @@ export default function MessageBubble(props: {
       </span>
 
       <div className={cn('flex max-w-[85%] flex-col gap-2 lg:max-w-[70%]', props.outgoing && 'items-end')}>
-        <div className='flex items-center gap-1 text-body-2xs font-normal text-dark-grey'>
+        <div className='flex items-center gap-1 text-body-s font-normal text-dark-grey'>
           <span>{props.author}</span>
           <span aria-hidden='true' className='h-1 w-1 rounded-full bg-dark-grey' />
           <time>{props.time}</time>
         </div>
 
         <p className={cn(
-          'rounded-[20px] p-3 text-body-m font-normal lg:text-body-xs',
+          'rounded-[20px] p-3 text-body-m font-normal lg:text-body-s',
           props.outgoing
             ? 'rounded-tr-none bg-dark-orange text-white'
             : 'rounded-tl-none border border-light-grey bg-white text-black'

@@ -8,7 +8,7 @@ export default function DateSeparator(props: {
   return (
     <div className={cn('flex items-center gap-2', props.className)}>
       <span aria-hidden='true' className='h-px flex-1 bg-dark-grey/40' />
-      <span className='text-body-2xs font-normal text-dark-grey'>{props.label}</span>
+      <span className='text-body-s font-normal text-dark-grey'>{props.label}</span>
       <span aria-hidden='true' className='h-px flex-1 bg-dark-grey/40' />
     </div>
   );

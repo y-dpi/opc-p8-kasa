@@ -3,9 +3,7 @@ import { redirect } from 'next/navigation';
 import { cache } from 'react';
 
 import type { AuthUser } from '../models/shared';
-
-// Name of the cookie that holds the session.
-const SESSION_COOKIE = 'kasa-session-token';
+import { SESSION_COOKIE } from './cookie';
 
 // Session lifetime in seconds (mirrors the API's 7-day JWT).
 const SESSION_MAX_AGE = 60 * 60 * 24 * 7;

@@ -10,12 +10,13 @@ type BrandLogoVariant = 'full' | 'picto';
 // Brand logo component.
 export default function BrandLogo(props: {
   variant?: BrandLogoVariant,
+  alt?: string,
   className?: string
 }) {
   return (
     <Image
       className={cn('w-full h-full object-contain', props.className)}
-      alt='Kasa'
+      alt={props.alt ?? 'Icône de marque'}
       loading='eager'
       src={props.variant === 'picto' ? KasaLogoCompact : KasaLogo}
     />

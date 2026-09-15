@@ -5,20 +5,24 @@ import cn from '../utils/className';
 // Property gallery component.
 export default function Gallery(props: {
   images: (string | StaticImageData)[],
-  alt: string,
   className?: string
 }) {
   const [cover, ...thumbnails] = props.images;
   if (!cover) return null;
 
+  const total = props.images.length;
+
   return (
-    <div className={cn('flex w-full flex-col gap-2.5 lg:flex-row', props.className)}>
+    <section
+      aria-label='Photos du logement'
+      className={cn('flex w-full flex-col gap-2.5 lg:flex-row', props.className)}
+    >
 
       {/* Cover */}
       <div className='relative aspect-303/357 w-full overflow-hidden rounded-[10px] lg:min-w-0 lg:flex-1'>
         <Image
           src={cover}
-          alt={props.alt}
+          alt={`Photo 1 sur ${total}`}
           fill
           priority
           sizes='(min-width: 1024px) 303px, 100vw'
@@ -36,7 +40,7 @@ export default function Gallery(props: {
             >
               <Image
                 src={image}
-                alt={`${props.alt} — photo ${index + 2}`}
+                alt={`Photo ${index + 2} sur ${total}`}
                 fill
                 sizes='(min-width: 1024px) 147px, 25vw'
                 className='object-cover'
@@ -45,6 +49,6 @@ export default function Gallery(props: {
           ))}
         </div>
       )}
-    </div>
+    </section>
   );
 }

@@ -7,6 +7,7 @@ import DateSeparator from '../../components/DateSeparator';
 import MessageBubble from '../../components/MessageBubble';
 import MessageComposer from '../../components/MessageComposer';
 import ScrollArea from '../../components/ScrollArea';
+import { requireSession } from '../../middleware/session';
 import cn from '../../utils/className';
 
 export const metadata: Metadata = { title: 'Messagerie' };
@@ -57,8 +58,12 @@ const MESSAGES: MessageGroup[] = [
   },
 ];
 
-// Messaging page.
+// Messaging page, reserved to the signed-in user.
+//
+// The backend exposes no conversation endpoint, so the threads below stay hardcoded until it does.
 export default async function MessagesPage(props: PageProps<'/messages'>) {
+  await requireSession();
+
   const searchParams = await props.searchParams;
   const requestedId = searchParams[USER_PARAM];
   const selectedId = typeof requestedId === 'string' ? requestedId : undefined;

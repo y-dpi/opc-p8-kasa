@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-import AboutPhotograph from '../../../assets/images/kasa-about-photograph-1.png';
-import HostPhotograph from '../../../assets/images/kasa-about-photograph-2.png';
-import HomePhotograph from '../../../assets/images/kasa-home-photograph.png';
+import { getPropertyDetail } from '../../../actions/properties';
 import Button from '../../../components/Button';
 import Card from '../../../components/Card';
 import Gallery from '../../../components/Gallery';
@@ -10,21 +9,25 @@ import HostCard from '../../../components/HostCard';
 import Icon from '../../../components/Icon';
 import Tag from '../../../components/Tag';
 
-export const metadata: Metadata = { title: 'Appartement cosy' };
+// Props of the page, the route parameters arriving as a promise.
+type PropertyPageProps = { params: Promise<{ id: string }> };
 
-// Property shown on the page.
-const PROPERTY = {
-  title: 'Appartement cosy',
-  location: 'Ile de France - Paris 17e',
-  description: 'Votre maison loin de chez vous. Que vous veniez de l’autre bout du monde, ou juste de quelques stations de RER, vous vous sentirez chez vous dans notre appartement.',
-  images: [HomePhotograph, AboutPhotograph, HostPhotograph, HomePhotograph, AboutPhotograph],
-  amenities: ['Cafetière', 'Bouilloire', 'Vaisselle', 'Micro-onde', 'Sèche-linge', 'Sèche Cheveux', 'Lit pour bébé', 'Télévision'],
-  categories: ['Batignolle', 'Montmartre'],
-  host: { id: 'nathalie-jean', name: 'Nathalie Jean', rating: 3 },
-};
+// Name the tab after the property itself.
+export async function generateMetadata({ params }: PropertyPageProps): Promise<Metadata> {
+  const { id } = await params;
+  const property = await getPropertyDetail(id);
+  return { title: property?.title ?? 'Logement introuvable' };
+}
 
 // Property page.
-export default function PropertyPage() {
+export default async function PropertyPage({ params }: PropertyPageProps) {
+  const { id } = await params;
+  const property = await getPropertyDetail(id);
+  if (!property) notFound();
+
+  // The API serves the cover apart from the gallery, which may hold nothing else.
+  const pictures = property.pictures.length > 0 ? property.pictures : [property.cover].filter((url) => url != null);
+
   return (
     <main className='mx-auto flex w-full max-w-242.75 flex-1 flex-col gap-6 px-4 py-10 sm:px-8 xl:px-0'>
 
@@ -39,55 +42,69 @@ export default function PropertyPage() {
         <div className='flex min-w-0 flex-1 flex-col gap-6'>
 
           {/* Pictures */}
-          <Gallery images={PROPERTY.images} alt={PROPERTY.title} />
+          <Gallery images={pictures} />
 
           {/* Details */}
           <Card as='section' className='flex flex-col gap-10 p-6'>
             <div className='flex flex-col gap-8'>
               <div className='flex flex-col gap-4'>
-                <h1 className='text-h2 font-medium text-black'>{PROPERTY.title}</h1>
-                <p className='flex items-center gap-2 text-body-m font-normal text-dark-grey'>
-                  <span className='h-4 w-4 shrink-0'>
-                    <Icon name='location' />
-                  </span>
-                  {PROPERTY.location}
-                </p>
+                <h1 className='text-h2 font-medium text-black'>{property.title}</h1>
+                {property.location && (
+                  <p className='flex items-center gap-2 text-body-m font-normal text-dark-grey'>
+                    <span className='h-4 w-4 shrink-0'>
+                      <Icon name='location' />
+                    </span>
+                    {property.location}
+                  </p>
+                )}
               </div>
 
-              <p className='text-body-m font-normal text-black'>{PROPERTY.description}</p>
+              {property.description && (
+                <p className='text-body-m font-normal text-black'>{property.description}</p>
+              )}
+
+              <p className='flex items-center gap-1.5'>
+                <span className='text-h4 font-medium text-black'>{property.price_per_night}€</span>
+                <span className='text-body-m font-normal text-dark-grey'>par nuit</span>
+              </p>
             </div>
 
-            <div className='flex flex-col gap-4'>
-              <h2 className='text-body-m font-medium text-black'>Équipements</h2>
-              <ul className='flex flex-wrap gap-2.5'>
-                {PROPERTY.amenities.map((amenity) => (
-                  <li key={amenity}><Tag label={amenity} /></li>
-                ))}
-              </ul>
-            </div>
+            {property.equipments.length > 0 && (
+              <div className='flex flex-col gap-4'>
+                <h2 className='text-body-m font-medium text-black'>Équipements</h2>
+                <ul className='flex flex-wrap gap-2.5'>
+                  {property.equipments.map((equipment) => (
+                    <li key={equipment}><Tag label={equipment} /></li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
-            <div className='flex flex-col gap-4'>
-              <h2 className='text-body-m font-medium text-black'>Catégorie</h2>
-              <ul className='flex flex-wrap gap-4.5'>
-                {PROPERTY.categories.map((category) => (
-                  <li key={category}><Tag label={category} /></li>
-                ))}
-              </ul>
-            </div>
+            {property.tags.length > 0 && (
+              <div className='flex flex-col gap-4'>
+                <h2 className='text-body-m font-medium text-black'>Catégorie</h2>
+                <ul className='flex flex-wrap gap-4.5'>
+                  {property.tags.map((tag) => (
+                    <li key={tag}><Tag label={tag} /></li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </Card>
         </div>
 
         {/* Host */}
         <HostCard
-          name={PROPERTY.host.name}
-          rating={PROPERTY.host.rating}
+          name={property.host.name}
+          rating={property.rating_avg}
+          avatar={property.host.picture ?? undefined}
           className='w-full lg:w-86 lg:shrink-0'
         >
           <div className='h-9'>
-            <Button label='Contacter l’hôte' />
+            <Button label='Contacter l’hôte' href={`/messages?user=${property.host.id}`} />
           </div>
           <div className='h-9'>
-            <Button label='Envoyer un message' href={`/messages?user=${PROPERTY.host.id}`} />
+            <Button label='Envoyer un message' href={`/messages?user=${property.host.id}`} />
           </div>
         </HostCard>
       </div>

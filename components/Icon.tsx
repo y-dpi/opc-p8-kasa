@@ -9,6 +9,7 @@ import LocationIcon from '../assets/icons/location-icon.svg';
 import MenuIcon from '../assets/icons/menu-icon.svg';
 import MessageIcon from '../assets/icons/message-icon.svg';
 import MessageFilledIcon from '../assets/icons/message-icon-filled.svg';
+import MissingPhotoIcon from '../assets/icons/missing-photo-icon.svg';
 import PlusIcon from '../assets/icons/plus-icon.svg';
 import SendIcon from '../assets/icons/send-icon.svg';
 import cn from '../utils/className';
@@ -25,6 +26,7 @@ export type IconName =
   | 'menu'
   | 'message'
   | 'message-filled'
+  | 'missing-photo'
   | 'plus'
   | 'send';
 
@@ -39,6 +41,7 @@ const ICONS: Record<IconName, StaticImageData> = {
   menu: MenuIcon,
   message: MessageIcon,
   'message-filled': MessageFilledIcon,
+  'missing-photo': MissingPhotoIcon,
   plus: PlusIcon,
   send: SendIcon
 };

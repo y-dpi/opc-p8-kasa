@@ -37,7 +37,7 @@ export default function IconButton(props: {
   // Render a link when a href is given.
   if (props.href) {
     return (
-      <NextLink href={props.href} aria-label={props.label} title={props.label} className={className}>
+      <NextLink href={props.href} aria-label={props.label} className={className}>
         {icon}
       </NextLink>
     );
@@ -47,7 +47,6 @@ export default function IconButton(props: {
     <button
       type={props.type ?? 'button'}
       aria-label={props.label}
-      title={props.label}
       onClick={props.onClick}
       className={className}
     >

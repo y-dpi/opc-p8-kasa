@@ -4,6 +4,7 @@ import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
+import { logout } from '../actions/auth';
 import BrandLogo from './BrandLogo';
 import Button from './Button';
 import Icon from './Icon';
@@ -18,7 +19,9 @@ const NAV_ITEMS = [
 ];
 
 // Header component.
-export default function Header() {
+export default function Header(props: {
+  userName?: string | null
+}) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -34,39 +37,56 @@ export default function Header() {
       <div className='mx-auto hidden w-full max-w-360 px-8 pt-10 lg:block xl:px-35'>
         <nav
           aria-label='Menu principal'
-          className='mx-auto flex w-full max-w-195.5 items-center justify-between gap-12 rounded-[10px] bg-white px-25 py-2 text-body-m shadow-[0_4px_4px_0_#b6b6b610]'
+          className='mx-auto flex w-full max-w-195.5 items-center justify-between gap-6 rounded-[10px] bg-white px-18 py-2 text-body-m shadow-[0_4px_4px_0_#b6b6b610]'
         >
-          <div className='flex items-center gap-7'>
+          <div className='flex shrink-0 items-center gap-7'>
             <MenuItem label='Accueil' href='/' active={isActive('/')} />
             <MenuItem label='À propos' href='/about' active={isActive('/about')} />
           </div>
 
-          <NextLink href='/' aria-label='Kasa, retour à l’accueil' className='h-10 w-28'>
-            <BrandLogo />
+          <NextLink href='/' className='h-10 w-28 shrink-0'>
+            <BrandLogo alt='Kasa, retour à l’accueil' />
           </NextLink>
 
-          <div className='flex items-center gap-7'>
-            <NextLink href='/properties/new' className='text-main-red hover:underline'>
+          <div className='flex min-w-0 items-center gap-7'>
+            <NextLink href='/properties/new' className='truncate whitespace-nowrap text-main-red hover:underline'>
               +Ajouter un logement
             </NextLink>
 
-            <div className='flex items-center gap-2 text-main-red'>
-              <NextLink href='/favorites' aria-label='Favoris' title='Favoris' className='h-4 w-4 hover:text-dark-orange'>
+            <div className='flex shrink-0 items-center gap-2 text-main-red'>
+              <NextLink href='/favorites' aria-label='Favoris' className='h-4 w-4 hover:text-dark-orange'>
                 <Icon name={isActive('/favorites') ? 'favorites-filled' : 'favorites'} />
               </NextLink>
               <span aria-hidden='true' className='h-4 w-px bg-main-red' />
-              <NextLink href='/messages' aria-label='Messagerie' title='Messagerie' className='h-4 w-4 hover:text-dark-orange'>
+              <NextLink href='/messages' aria-label='Messagerie' className='h-4 w-4 hover:text-dark-orange'>
                 <Icon name={isActive('/messages') ? 'message-filled' : 'message'} />
               </NextLink>
             </div>
+
+            {/* Session control, the name kept as a tooltip so the bar stays on one line */}
+            {props.userName ? (
+              <form action={logout} className='shrink-0'>
+                <button
+                  type='submit'
+                  title={`Connecté en tant que ${props.userName}`}
+                  className='cursor-pointer whitespace-nowrap text-main-red hover:underline'
+                >
+                  Déconnexion
+                </button>
+              </form>
+            ) : (
+              <NextLink href='/login' className='shrink-0 whitespace-nowrap text-main-red hover:underline'>
+                Connexion
+              </NextLink>
+            )}
           </div>
         </nav>
       </div>
 
       {/* Mobile menu bar */}
       <div className='flex w-full items-center justify-between gap-10 bg-white px-4 py-4 lg:hidden'>
-        <NextLink href='/' aria-label='Kasa, retour à l’accueil' className='h-13 w-11'>
-          <BrandLogo variant='picto' />
+        <NextLink href='/' className='h-13 w-11'>
+          <BrandLogo variant='picto' alt='Kasa, retour à l’accueil' />
         </NextLink>
 
         <button
@@ -86,11 +106,10 @@ export default function Header() {
           <div className='flex items-center justify-between gap-10'>
             <NextLink
               href='/'
-              aria-label='Kasa, retour à l’accueil'
               onClick={() => setOpen(false)}
               className='h-13 w-11'
             >
-              <BrandLogo variant='picto' />
+              <BrandLogo variant='picto' alt='Kasa, retour à l’accueil' />
             </NextLink>
 
             <button
@@ -116,12 +135,36 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className='h-9 w-50'>
-            <Button
-              label='Ajouter un logement'
-              href='/properties/new'
-              onClick={() => setOpen(false)}
-            />
+          <div className='flex flex-col gap-4'>
+            {props.userName && (
+              <p className='truncate text-body-m font-normal text-dark-grey'>
+                Connecté en tant que {props.userName}
+              </p>
+            )}
+
+            <div className='h-9 w-50'>
+              <Button
+                label='Ajouter un logement'
+                href='/properties/new'
+                onClick={() => setOpen(false)}
+              />
+            </div>
+
+            {/* Session control */}
+            {props.userName ? (
+              <form action={logout} className='h-9 w-50'>
+                <Button label='Déconnexion' type='submit' variant='secondary' />
+              </form>
+            ) : (
+              <div className='h-9 w-50'>
+                <Button
+                  label='Connexion'
+                  href='/login'
+                  variant='secondary'
+                  onClick={() => setOpen(false)}
+                />
+              </div>
+            )}
           </div>
         </div>
       )}

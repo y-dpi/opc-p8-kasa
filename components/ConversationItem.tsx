@@ -34,12 +34,12 @@ export default function ConversationItem(props: {
           <span className={cn('text-body-m text-black', props.unread ? 'font-medium' : 'font-normal')}>
             {props.name}
           </span>
-          <span className='truncate text-body-xs font-normal text-dark-grey'>{props.preview}</span>
+          <span className='truncate text-body-s font-normal text-dark-grey'>{props.preview}</span>
         </span>
       </span>
 
       <span className='flex shrink-0 flex-col items-end gap-3'>
-        <span className='text-body-xs font-normal text-dark-grey'>{props.time}</span>
+        <span className='text-body-s font-normal text-dark-grey'>{props.time}</span>
         {props.unread && (
           <>
             <span aria-hidden='true' className='h-1.5 w-1.5 rounded-full bg-main-red' />
