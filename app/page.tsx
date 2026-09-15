@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 
 import { listFavoriteIds, toggleFavorite } from '../actions/favorites';
@@ -6,6 +7,11 @@ import HomePhotograph from '../assets/images/kasa-home-photograph.png';
 import PageHeading from '../components/PageHeading';
 import PropertyCard from '../components/PropertyCard';
 import StepCard from '../components/StepCard';
+
+export const metadata: Metadata = {
+  description: 'Trouvez et réservez des logements uniques chez l’habitant, partout en France, sur Kasa.',
+  alternates: { canonical: '/' },
+};
 
 // Introduction of the page.
 const INTRODUCTION = 'Avec Kasa, vivez des séjours uniques dans des hébergements chaleureux, sélectionnés avec soin par nos hôtes.';
@@ -29,7 +35,15 @@ export default async function Home() {
         <PageHeading title='Chez vous, partout et ailleurs' description={INTRODUCTION} />
 
         <div className='relative h-120 w-full overflow-hidden rounded-[20px]'>
-          <Image src={HomePhotograph} alt='' fill preload sizes='100vw' className='object-cover' />
+          <Image
+            src={HomePhotograph}
+            alt=''
+            fill
+            preload
+            fetchPriority='high'
+            sizes='100vw'
+            className='object-cover'
+          />
         </div>
       </section>
 
@@ -41,7 +55,13 @@ export default async function Home() {
           Aucun logement n’est disponible pour le moment.
         </p>
       ) : (
-        <section id='listings' aria-label='Nos logements' className='grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3'>
+        <section
+          id='listings'
+          aria-label='Nos logements'
+          itemScope
+          itemType='https://schema.org/ItemList'
+          className='grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3'
+        >
           {properties.map((property) => {
             const favorite = favoriteIds.includes(property.id);
 

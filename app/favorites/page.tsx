@@ -4,7 +4,10 @@ import { listFavorites, toggleFavorite } from '../../actions/favorites';
 import PageHeading from '../../components/PageHeading';
 import PropertyCard from '../../components/PropertyCard';
 
-export const metadata: Metadata = { title: 'Vos favoris' };
+export const metadata: Metadata = {
+  title: 'Vos favoris',
+  robots: { index: false, follow: true },
+};
 
 // Introduction of the page.
 const INTRODUCTION = `Retrouvez ici tous les logements que vous avez aimés.
@@ -25,7 +28,12 @@ export default async function FavoritesPage() {
           Vous n’avez pas encore de logement favori.
         </p>
       ) : (
-        <section aria-label='Logements favoris' className='grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3'>
+        <section
+          aria-label='Logements favoris'
+          itemScope
+          itemType='https://schema.org/ItemList'
+          className='grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3'
+        >
           {properties.map((property) => (
             <PropertyCard
               key={property.id}

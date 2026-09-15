@@ -5,7 +5,11 @@ import AboutPhotograph from '../../assets/images/kasa-about-photograph-1.png';
 import MissionPhotograph from '../../assets/images/kasa-about-photograph-2.png';
 import PageHeading from '../../components/PageHeading';
 
-export const metadata: Metadata = { title: 'À propos' };
+export const metadata: Metadata = {
+  title: 'À propos',
+  description: 'Kasa met en relation des voyageurs en quête d’authenticité et des hôtes passionnés par leur région.',
+  alternates: { canonical: '/about' },
+};
 
 // Introduction of the page.
 const INTRODUCTION = `Chez Kasa, nous croyons que chaque voyage mérite un lieu unique où se sentir bien.
@@ -32,7 +36,15 @@ export default function AboutPage() {
         <PageHeading title='À propos' description={INTRODUCTION} />
 
         <div className='relative h-120 w-full overflow-hidden rounded-[20px]'>
-          <Image src={AboutPhotograph} alt='' fill preload sizes='100vw' className='object-cover' />
+          <Image
+            src={AboutPhotograph}
+            alt=''
+            fill
+            preload
+            fetchPriority='high'
+            sizes='100vw'
+            className='object-cover'
+          />
         </div>
       </section>
 

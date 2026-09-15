@@ -10,7 +10,10 @@ import ScrollArea from '../../components/ScrollArea';
 import { requireSession } from '../../middleware/session';
 import cn from '../../utils/className';
 
-export const metadata: Metadata = { title: 'Messagerie' };
+export const metadata: Metadata = {
+  title: 'Messagerie',
+  robots: { index: false, follow: true },
+};
 
 // Types.
 interface MessageGroup {

@@ -4,6 +4,8 @@ import type { NextConfig } from 'next';
 const API_URL = (process.env.API_URL ?? 'http://localhost:3000').replace(/\/+$/, '');
 
 const nextConfig: NextConfig = {
+  htmlLimitedBots: /.*/,
+
   images: {
     // Hosts the API points its property and profile pictures at.
     remotePatterns: [

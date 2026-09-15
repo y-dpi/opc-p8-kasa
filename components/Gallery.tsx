@@ -36,6 +36,7 @@ export default function Gallery(props: {
           alt=''
           fill
           preload
+          fetchPriority='high'
           sizes='(min-width: 1024px) 303px, 100vw'
           className='object-cover'
         />

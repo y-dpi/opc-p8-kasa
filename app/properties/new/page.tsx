@@ -3,7 +3,10 @@ import type { Metadata } from 'next';
 import NewPropertyForm from '../../../components/NewPropertyForm';
 import { requireSession } from '../../../middleware/session';
 
-export const metadata: Metadata = { title: 'Ajouter une propriété' };
+export const metadata: Metadata = {
+  title: 'Ajouter une propriété',
+  robots: { index: false, follow: true },
+};
 
 // Add property page, reserved to the signed-in user.
 export default async function NewPropertyPage() {

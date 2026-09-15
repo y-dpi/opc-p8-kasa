@@ -4,7 +4,11 @@ import Card from '../../components/Card';
 import PageHeading from '../../components/PageHeading';
 import RegisterForm from '../../components/RegisterForm';
 
-export const metadata: Metadata = { title: 'Inscription' };
+export const metadata: Metadata = {
+  title: 'Inscription',
+  description: 'Créez votre compte Kasa pour réserver des logements uniques et partager les vôtres.',
+  alternates: { canonical: '/register' },
+};
 
 // Introduction of the page.
 const INTRODUCTION = 'Créez votre compte et commencez à voyager autrement : réservez des logements uniques, découvrez de nouvelles destinations et partagez vos propres lieux avec d’autres voyageurs.';

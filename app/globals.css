@@ -1,19 +1,10 @@
 @import 'tailwindcss';
 
-/* Load font 'Inter' */
-@font-face {
-  font-family: 'Inter';
-  src: url('../assets/fonts/inter.ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* Tailwind themes */
 @theme inline {
 
   /* Fonts */
-  --font-body: 'Inter', sans-serif;
+  --font-body: var(--font-inter), sans-serif;
 
   /* Colors */
   --color-black: #0D0D0D;

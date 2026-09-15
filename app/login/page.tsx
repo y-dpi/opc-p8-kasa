@@ -4,7 +4,11 @@ import Card from '../../components/Card';
 import LoginForm from '../../components/LoginForm';
 import PageHeading from '../../components/PageHeading';
 
-export const metadata: Metadata = { title: 'Connexion' };
+export const metadata: Metadata = {
+  title: 'Connexion',
+  description: 'Connectez-vous à Kasa pour retrouver vos réservations, vos annonces et vos logements favoris.',
+  alternates: { canonical: '/login' },
+};
 
 // Introduction of the page.
 const INTRODUCTION = `Connectez-vous pour retrouver vos réservations,
